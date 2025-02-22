@@ -6,7 +6,7 @@ services:
     user: "101:101"
     hostname: clickhouse
     volumes:
-      - ${PWD}/clickhouse-server:/etc/clickhouse-server/config.d
+      - ${PWD}/clickhouse-server:/etc/clickhouse-server/
     ports:
       - "8123:8123"
       - "9000:9000"
