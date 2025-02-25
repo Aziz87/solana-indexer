@@ -1,5 +1,18 @@
 -- FUNCTIONS
 
+-- CURSORS
+
+CREATE TABLE cursors
+(
+    id String,
+    block_num Int64,
+    cursor String,
+    block_id String,
+)
+ENGINE = MergeTree
+PRIMARY KEY id
+ORDER BY id;
+
 -- BLOCKS
 
 CREATE TABLE blocks
