@@ -4,8 +4,6 @@ use substreams_database_change::pb::database::DatabaseChanges;
 use substreams_database_change::tables::{Row, Tables};
 use substreams_solana::pb::sf::solana::r#type::v1::{Block, ConfirmedTransaction};
 
-use substreams_solana_utils::transaction::{get_context, get_signature, get_signers, TransactionContext};
-
 use raydium_amm_substream;
 use raydium_amm_substream::raydium_amm::constants::RAYDIUM_AMM_PROGRAM_ID;
 use raydium_amm_substream::pb::raydium_amm::raydium_amm_event;
