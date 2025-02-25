@@ -35,13 +35,7 @@ fn block_database_changes(block: Block) -> Result<DatabaseChanges, Error> {
     for (index, transaction) in block.transactions.iter().enumerate() {
         match parse_transaction(transaction, index as u32, block.slot, &block.blockhash, &mut tables)? {
             true => {
-                let signers = get_signers(transaction);
-                let row = tables.create_row("transactions", [("slot", block.slot.to_string()), ("transaction_index", index.to_string())])
-                    .set("signature", get_signature(transaction))
-                    .set("number_of_signers", signers.len().to_string());
-                for i in 0..8 {
-                    row.set(&format!("signer{i}"), signers.get(i).unwrap_or(&"".into()));
-                }
+               
             },
             false => (),
         }
@@ -96,10 +90,6 @@ fn parse_instruction<'a>(
     let program_id = instruction.program_id();
     let row = if program_id == RAYDIUM_AMM_PROGRAM_ID {
         parse_raydium_amm_instruction(instruction, context, tables, slot, transaction_index)
-    } else if program_id == TOKEN_PROGRAM_ID {
-        parse_spl_token_instruction(instruction, context, tables, slot, transaction_index)
-    } else if program_id == SYSTEM_PROGRAM_ID {
-        parse_system_program_instruction(instruction, context, tables, slot, transaction_index)
     } else if program_id == PUMPFUN_PROGRAM_ID {
         parse_pumpfun_instruction(instruction, context, tables, slot, transaction_index)
     } else if program_id == MPL_TOKEN_METADATA_PROGRAM_ID {
