@@ -96,11 +96,11 @@ fn parse_instruction<'a>(
     let program_id = instruction.program_id();
     let row = if program_id == RAYDIUM_AMM_PROGRAM_ID {
         parse_raydium_amm_instruction(instruction, context, tables, slot, transaction_index)
-    } else if program_id == TOKEN_PROGRAM_ID {
-        /*parse_spl_token_instruction(instruction, context, tables, slot, transaction_index)*/
+    } /*else if program_id == TOKEN_PROGRAM_ID {
+        parse_spl_token_instruction(instruction, context, tables, slot, transaction_index)
     } else if program_id == SYSTEM_PROGRAM_ID {
-        /*parse_system_program_instruction(instruction, context, tables, slot, transaction_index)*/
-    } else if program_id == PUMPFUN_PROGRAM_ID {
+        parse_system_program_instruction(instruction, context, tables, slot, transaction_index)
+    }*/ else if program_id == PUMPFUN_PROGRAM_ID {
         parse_pumpfun_instruction(instruction, context, tables, slot, transaction_index)
     } else if program_id == MPL_TOKEN_METADATA_PROGRAM_ID {
         parse_mpl_token_metadata_instruction(instruction, context, tables, slot, transaction_index)
