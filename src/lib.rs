@@ -5,15 +5,10 @@ use substreams_database_change::tables::{Row, Tables};
 use substreams_solana::pb::sf::solana::r#type::v1::{Block, ConfirmedTransaction};
 
 use substreams_solana_utils::transaction::{get_context, get_signature, get_signers, TransactionContext};
-use substreams_solana_utils::system_program::constants::SYSTEM_PROGRAM_ID;
-use substreams_solana_utils::spl_token::constants::TOKEN_PROGRAM_ID;
 
 use raydium_amm_substream;
 use raydium_amm_substream::raydium_amm::constants::RAYDIUM_AMM_PROGRAM_ID;
 use raydium_amm_substream::pb::raydium_amm::raydium_amm_event;
-
-use spl_token_substream;
-use spl_token_substream::pb::spl_token::{spl_token_event, AuthorityType};
 
 use mpl_token_metadata_substream;
 use mpl_token_metadata_substream::mpl_token_metadata::constants::MPL_TOKEN_METADATA_PROGRAM_ID;
@@ -23,8 +18,6 @@ use pumpfun_substream;
 use pumpfun_substream::pumpfun::PUMPFUN_PROGRAM_ID;
 use pumpfun_substream::pb::pumpfun::pumpfun_event;
 
-use system_program_substream;
-use system_program_substream::pb::system_program::system_program_event;
 
 mod instruction;
 use instruction::{get_indexed_instructions, IndexedInstruction, IndexedInstructions};
